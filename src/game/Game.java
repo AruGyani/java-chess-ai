@@ -1,6 +1,9 @@
 package src.game;
 
 import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.Font;
+
 import java.awt.event.MouseEvent;
 // import java.util.List;
 
@@ -31,6 +34,14 @@ public class Game {
 
     public void render(Graphics2D g)  {
         board.render(g);
+
+        g.setColor(new Color(236, 240, 194));
+        g.setFont(new Font("SansSerif", Font.PLAIN, 24));
+
+        int offX = g.getFontMetrics().stringWidth("chess engine");
+        int offY = g.getFontMetrics().getHeight();
+
+        g.drawString("chess engine", board.offsetX / 2 - offX / 2, App.HEIGHT / 2 - offY / 2);
     }
 
     public void makeMove(Piece selection2) {

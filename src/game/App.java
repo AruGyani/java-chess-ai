@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -17,9 +18,10 @@ import src.pieces.Piece;
 
 public class App extends JPanel {
     // Setup
-    public static int WIDTH = 8 * Piece.TILE_SIZE + 80, HEIGHT = 8 * Piece.TILE_SIZE + 80;
+    public static int WIDTH = 8 * Piece.TILE_SIZE + 800, HEIGHT = 8 * Piece.TILE_SIZE + 100;
     private static final int UPS = 60, FPS = 560;
     private static JFrame frame = new JFrame();
+    private RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
     public Game game = new Game();
 
@@ -85,6 +87,9 @@ public class App extends JPanel {
 
         g.setColor(new Color(31, 31, 31));
         g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        rh.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHints(rh);
 
         game.render(g);
     }
